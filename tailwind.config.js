@@ -9,6 +9,10 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    colors: {
+      ctext: "#ffffffeb",
+      back: "#222",
+    },
     extend: {},
   },
   plugins: [require("@tailwindcss/forms"), require("@headlessui/tailwindcss")],

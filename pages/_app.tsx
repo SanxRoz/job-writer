@@ -5,8 +5,10 @@ import "../styles/globals.css";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Component {...pageProps} />
-      <Analytics />
+      <div className="bg-[#222] text.[#ffffffeb]">
+        <Component {...pageProps} />
+        <Analytics />
+      </div>
     </>
   );
 }
