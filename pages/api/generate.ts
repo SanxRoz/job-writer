@@ -35,22 +35,22 @@ About the role
 We are seeking a Qualified Automotive Mechanic / Motor Technician / 3rd or 4th year apprentice to join our expanding service team. 
 
 Tasks and responsibilities
--Provide expert advice in relation recurrent mechanical condition of vehicles 
--Repair vehicle engines, transmission and suspension
-- Report all necessary work, service or repairs 
-- Maintain a safe working environment through the correct operation of all tools and specialised equipment
-- Demonstrate behaviours that align with company policies, organisational values 
+Provide expert advice in relation recurrent mechanical condition of vehicles 
+Repair vehicle engines, transmission and suspension
+Report all necessary work, service or repairs 
+Maintain a safe working environment through the correct operation of all tools and specialised equipment
+Demonstrate behaviours that align with company policies, organisational values 
 
 Skills and experience
-- Trade qualification as a Motor Mechanic
-- Demonstrated experience in a similar role
-- Current Australian driver's licence
-- Previous dealership experience highly valued 
+Trade qualification as a Motor Mechanic
+Demonstrated experience in a similar role
+Current Australian driver's licence
+Previous dealership experience highly valued 
 
 Benefits and perks
-- Attractive remuneration ($60k-$70k) plus a generous superannuation
-- Receive the best training in the business with nationally recognised qualifications
-- Employment security
+Attractive remuneration ($60k-$70k) plus a generous superannuation
+Receive the best training in the business with nationally recognised qualifications
+Employment security
 
 About us
 Smith Auto has a solid record in providing high quality workmanship and hone., personalised customer service. We are well established and have been repairing cars for over 30 years. We value the small team culture at our workshop that helps make the day enjoyable.`,
