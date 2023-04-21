@@ -420,10 +420,6 @@ const Home: NextPage = () => {
                     return (
                       <div
                         className="border-0 text-base text-ctext shadow-md p-4 hover:bg-gray-100 transition cursor-copy border"
-                        onClick={() => {
-                          navigator.clipboard.writeText(generatedBio);
-                          toast("Job ad copied to clipboard");
-                        }}
                         key={generatedBio}
                       >
                         <p>{generatedBio}</p>
