@@ -11,6 +11,7 @@ function classNames(...classes: string[]) {
 }
 
 export type VibeType =
+  | "Choose the industry do you work in"
   | "Accounting"
   | "Admin & Office Support"
   | "Advertising, Arts & Media"
@@ -47,6 +48,7 @@ interface DropDownProps {
 }
 
 let vibes: VibeType[] = [
+  "Choose the industry do you work in",
   "Accounting",
   "Admin & Office Support",
   "Advertising, Arts & Media",
