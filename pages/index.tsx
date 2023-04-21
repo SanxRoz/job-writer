@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import DropDown, { VibeType } from "../components/DropDown";
 import LoadingDots from "../components/LoadingDots";
+import ReactMarkdown from "react-markdown";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
@@ -406,10 +407,10 @@ const Home: NextPage = () => {
             <>
               <div>
                 <h2
-                  className="sm:text-4xl text-3xl font-bold text-slate-900 mx-auto"
+                  className="text-center font-bold font-bold text-[1.5rem] w-full text-ctext"
                   ref={bioRef}
                 >
-                  Your generated bios
+                  Your Job ad
                 </h2>
               </div>
               <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
@@ -419,10 +420,14 @@ const Home: NextPage = () => {
                   .map((generatedBio) => {
                     return (
                       <div
-                        className="bg-white rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border"
+                        className="border-0 text-base text-ctext shadow-md p-4 hover:bg-gray-100 transition cursor-copy border"
+                        onClick={() => {
+                          navigator.clipboard.writeText(generatedBio);
+                          toast("Job ad copied to clipboard");
+                        }}
                         key={generatedBio}
                       >
-                        <p>{generatedBio}</p>
+                        <ReactMarkdown>{generatedBio}</ReactMarkdown>
                       </div>
                     );
                   })}
