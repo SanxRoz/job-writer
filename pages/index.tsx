@@ -426,7 +426,7 @@ const Home: NextPage = () => {
                         }}
                         key={generatedBio}
                       >
-                        <ReactMarkdown>{generatedBio}</ReactMarkdown>
+                        <p>{generatedBio}</p>
                       </div>
                     );
                   })}
