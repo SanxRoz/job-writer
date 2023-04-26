@@ -109,6 +109,7 @@ const Home: NextPage = () => {
       const { value, done: doneReading } = await reader.read();
       done = doneReading;
       const chunkValue = decoder.decode(value);
+      console.log(chunkValue);
       setGeneratedBios((prev) => prev + chunkValue);
     }
     scrollToBios();
@@ -470,7 +471,6 @@ const Home: NextPage = () => {
             <>
               <div></div>
               <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
-                {console.log(generatedBios)}
                 {generatedBios
                   .substring(generatedBios.indexOf("1"))
                   .split("%%%%%%%%%")
