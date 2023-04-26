@@ -104,17 +104,14 @@ const Home: NextPage = () => {
     const reader = data.getReader();
     const decoder = new TextDecoder();
     let done = false;
-    let bios = "";
 
     while (!done) {
       const { value, done: doneReading } = await reader.read();
       done = doneReading;
       const chunkValue = decoder.decode(value);
       console.log(chunkValue);
-      bios += chunkValue;
+      setGeneratedBios((prev) => prev + chunkValue);
     }
-
-    setGeneratedBios(bios);
     scrollToBios();
     // Send data to Airtabl
     setLoading(false);
