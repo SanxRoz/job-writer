@@ -22,7 +22,7 @@ const handler = async (req: Request): Promise<Response> => {
     messages: [
       {
         role: "system",
-        content: `You are a world class job writer, I'll provide you with the Company Name, size company, the main product or service, why work in the company, goals, benefits, working options, Job Title, location, supervisor, main responsibilities,  key duties, experience of candidate, Education requirements candidate, key Skills candidate and I want you to create a world class job ad with this example estructure, but if you have a better way to write it, pls improve it
+        content: `You are a world class job writer, return me the text on markdown I'll provide you with the Company Name, size company, the main product or service, why work in the company, goals, benefits, working options, Job Title, location, supervisor, main responsibilities,  key duties, experience of candidate, Education requirements candidate, key Skills candidate and I want you to create a world class job ad with this example estructure, but if you have a better way to write it, pls improve it
 
 example of Smith Auto company that want a Motor Mechanic employee
 
@@ -61,7 +61,6 @@ Smith Auto has a solid record in providing high quality workmanship and hone., p
     top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0,
-    max_tokens: 200,
     stream: true,
     n: 1,
   };
