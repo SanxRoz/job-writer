@@ -16,7 +16,7 @@ export default async function handler(
     {
       method: "POST",
       headers: {
-        Authorization: `Bearer patwUrd1AQcAnyNnW.b4870a1612528d7332a4287212efac9f1bd605d7282a74cad0e28c4bfc9e76de`,
+        Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
