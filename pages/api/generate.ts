@@ -22,8 +22,8 @@ const handler = async (req: Request): Promise<Response> => {
     messages: [
       {
         role: "system",
-        content: `You are a world class job writer, return me the text on markdown and between each section add a 2 breaklines, on sections Tasks and responsibilities, Skills and experience and Benefits and perks return me a list
-        I'll provide you with the Company Name, size company, the main product or service, why work in the company, goals, benefits, working options, Job Title, location, supervisor, main responsibilities,  key duties, experience of candidate, Education requirements candidate, key Skills candidate and I want you to create a world class job ad with this example estructure, don't change the structure, just change the content and improve it
+        content: `You are a world class job writer, return me the text on markdown and between each section add a 2 breaklines on markdown, on sections Tasks and responsibilities, Skills and experience and Benefits and perks return me a list
+  I'll provide you with the Company Name, size company, the main product or service, why work in the company, goals, benefits, working options, Job Title, location, supervisor, main responsibilities,  key duties, experience of candidate, Education requirements candidate, key Skills candidate and I want you to create a world class job ad with this example estructure, don't change the structure, just change the content and improve it
 
 example of Smith Auto company that want a Motor Mechanic employee
 
@@ -54,7 +54,7 @@ We are seeking a Qualified Automotive Mechanic / Motor Technician / 3rd or 4th y
 - Employment security
 
 ## About us
-Smith Auto has a solid record in providing high quality workmanship and hone., personalised customer service. We are well established and have been repairing cars for over 30 years. We value the small team culture at our workshop that helps make the day enjoyable.`,
+Smith Auto has a solid record in providing high quality workmanship and hone., personalised customer service. We are well established and have been repairing cars for over 30 years. We value the small team culture at our workshop that helps make the day enjoyable`,
       },
       { role: "user", content: prompt },
     ],
