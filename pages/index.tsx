@@ -484,7 +484,7 @@ const Home: NextPage = () => {
                         key={generatedBio}
                       >
                         <button
-                          className="absolute bg-[#2378d1] rounded-xl text-white font-medium px-4 py-2"
+                          className="absolute bg-[#2378d1] rounded-xl text-white font-medium px-4 py-2 right-0 top-[-10px]"
                           onClick={() => {
                             navigator.clipboard.writeText(generatedBio);
                             toast("Bio copied to clipboard");
