@@ -52,6 +52,36 @@ const Home: NextPage = () => {
     setGeneratedBios("");
     setLoading(true);
 
+    if (!fname || !lname || !email || !vibe) {
+      toast("Please fill in all the fields", {
+        style: {
+          backgroundColor: "#e11d48",
+          color: "white",
+        },
+      });
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const airtableResponse = await fetch("/api/airtable", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fname,
+          lname,
+          email,
+          vibe,
+        }),
+      });
+      const airtableData = await airtableResponse.json();
+      console.log(airtableData);
+    } catch (error) {
+      console.error(error);
+    }
+
     const response = await fetch("/api/generate", {
       method: "POST",
       headers: {
@@ -79,29 +109,11 @@ const Home: NextPage = () => {
       const { value, done: doneReading } = await reader.read();
       done = doneReading;
       const chunkValue = decoder.decode(value);
+      console.log(chunkValue);
       setGeneratedBios((prev) => prev + chunkValue);
     }
     scrollToBios();
-    // Send data to Airtable
-    try {
-      const airtableResponse = await fetch("/api/airtable", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          fname,
-          lname,
-          email,
-          vibe,
-        }),
-      });
-      const airtableData = await airtableResponse.json();
-      console.log(airtableData);
-    } catch (error) {
-      console.error(error);
-    }
-
+    // Send data to Airtabl
     setLoading(false);
   };
 
@@ -457,14 +469,7 @@ const Home: NextPage = () => {
         <div className="space-y-10 my-10">
           {generatedBios && (
             <>
-              <div>
-                <h2
-                  className="text-center font-bold font-bold text-[1.5rem] w-full text-ctext"
-                  ref={bioRef}
-                >
-                  Your job ad
-                </h2>
-              </div>
+              <div></div>
               <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
                 {generatedBios
                   .substring(generatedBios.indexOf("1"))
@@ -472,13 +477,22 @@ const Home: NextPage = () => {
                   .map((generatedBio) => {
                     return (
                       <div
-                        className="prose prose-sm rounded-xl p-4 text-ctext hover:bg-gray-100 transition cursor-copy border-0"
+                        className="relative prose prose-sm rounded-xl p-4 text-ctext hover:bg-gray-100 transition cursor-copy border-0"
                         onClick={() => {
                           navigator.clipboard.writeText(generatedBio);
                           toast("Bio copied to clipboard");
                         }}
                         key={generatedBio}
                       >
+                        <button
+                          className="absolute bg-[#2378d1] rounded-xl text-white font-medium px-4 py-2 right-0 top-[-10px]"
+                          onClick={() => {
+                            navigator.clipboard.writeText(generatedBio);
+                            toast("Bio copied to clipboard");
+                          }}
+                        >
+                          Copy
+                        </button>
                         <ReactMarkdown>{generatedBio}</ReactMarkdown>
                       </div>
                     );
