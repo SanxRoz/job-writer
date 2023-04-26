@@ -388,7 +388,7 @@ const Home: NextPage = () => {
           )}
           {loading && (
             <button
-              className="bg-[#2378d1] rounded-lg text-ctext font-semibold px-[1.125rem] py-[0.625rem] sm:mt-10 mt-8 w-full"
+              className="bg-black rounded-xl text-white font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80 w-full"
               disabled
             >
               <LoadingDots color="white" style="large" />
@@ -406,23 +406,23 @@ const Home: NextPage = () => {
             <>
               <div>
                 <h2
-                  className="text-center font-bold font-bold text-[1.5rem] w-full text-ctext"
+                  className="sm:text-4xl text-3xl font-bold text-slate-900 mx-auto"
                   ref={bioRef}
                 >
-                  Your Job ad
+                  Your generated bios
                 </h2>
               </div>
               <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
                 {generatedBios
-                  .substring(generatedBios.indexOf("1"))
-                  .split("___")
+                  .substring(generatedBios.indexOf("1") + 3)
+                  .split("2.")
                   .map((generatedBio) => {
                     return (
                       <div
-                        className="border-0 text-base text-ctext shadow-md p-4 hover:bg-gray-100 transition cursor-copy border"
+                        className="bg-white rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border"
                         onClick={() => {
                           navigator.clipboard.writeText(generatedBio);
-                          toast("Job ad copied to clipboard");
+                          toast("Bio copied to clipboard");
                         }}
                         key={generatedBio}
                       >
