@@ -49,6 +49,7 @@ const Home: NextPage = () => {
 
   const generateBio = async (e: any) => {
     e.preventDefault();
+    setGeneratedBios("");
     setLoading(true);
 
     if (!fname || !lname || !email || !vibe) {
@@ -103,18 +104,17 @@ const Home: NextPage = () => {
     const reader = data.getReader();
     const decoder = new TextDecoder();
     let done = false;
-
-    const newGeneratedBios: string[] = [];
+    let generatedText = "";
 
     while (!done) {
       const { value, done: doneReading } = await reader.read();
       done = doneReading;
       const chunkValue = decoder.decode(value);
       console.log(chunkValue);
-      newGeneratedBios.push(chunkValue);
+      generatedText += chunkValue;
     }
 
-    setGeneratedBios(newGeneratedBios);
+    setGeneratedBios(generatedText);
     scrollToBios();
     // Send data to Airtabl
     setLoading(false);
