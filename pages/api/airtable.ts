@@ -25,7 +25,7 @@ export default async function handler(
             fields: {
               "First Name": fname,
               "Last Name": lname,
-              Email: email,
+              "Email Address": email,
               Industry: vibe,
             },
           },
