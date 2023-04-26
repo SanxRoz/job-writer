@@ -52,6 +52,11 @@ const Home: NextPage = () => {
     setGeneratedBios("");
     setLoading(true);
 
+    if (!fname || !lname || !email || !vibe) {
+      toast("Please fill in all the fields");
+      return;
+    }
+
     try {
       const airtableResponse = await fetch("/api/airtable", {
         method: "POST",
