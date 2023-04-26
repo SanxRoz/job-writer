@@ -477,7 +477,7 @@ const Home: NextPage = () => {
                   .map((generatedBio) => {
                     return (
                       <div
-                        className="relative prose prose-sm rounded-xl p-4 text-ctext hover:bg-gray-100 transition cursor-copy border-0"
+                        className="relative rounded-xl p-4 text-ctext hover:bg-gray-100 transition cursor-copy border-0"
                         onClick={() => {
                           navigator.clipboard.writeText(generatedBio);
                           toast("Bio copied to clipboard");
