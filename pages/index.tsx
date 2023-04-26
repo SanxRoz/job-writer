@@ -21,6 +21,7 @@ const Home: NextPage = () => {
   const [workingops, setWorkingops] = useState("");
   const [jtitle, setJtitle] = useState("");
   const [location, setLocation] = useState("");
+  const [salary, setSalary] = useState("");
   const [supervisor, setSupervisor] = useState("");
   const [responsibilities, setResponsibilities] = useState("");
   const [duties, setDuties] = useState("");
@@ -41,10 +42,10 @@ const Home: NextPage = () => {
     }
   };
 
-  const prompt = `Company Name${company}, size company ${sizecompany},
-  main product or service ${product}, why work in the company ${whycompany},goals${goals},benefits${benefits},
-  working options ${workingops},Job Title ${jtitle},location ${location},supervisor${supervisor},main responsibilities ${responsibilities},
-  key duties${duties}, experience of candidate ${experience},Education requirements candidate ${edurequirements}, key Skills candidate ${Skills}`;
+  const prompt = `Company Name ${company}, size company ${sizecompany},
+  main product or service ${product}, why work in the company ${whycompany}, goals ${goals}, benefits ${benefits},
+  working options ${workingops},Job Title ${jtitle},location ${location}, salary range ${salary}, supervisor ${supervisor},main responsibilities ${responsibilities},
+  key duties ${duties}, experience of candidate ${experience},Education requirements candidate ${edurequirements}, key Skills candidate ${Skills}`;
 
   const generateBio = async (e: any) => {
     e.preventDefault();
@@ -233,7 +234,7 @@ const Home: NextPage = () => {
               <p className="text-left text-ctext font-semibold mb-2 text-base leading-6">
                 Any special benefits?
               </p>
-              <input
+              <textarea
                 value={benefits}
                 onChange={(e) => setBenefits(e.target.value)}
                 className="w-full focus:ring-[#2378d1] focus:outline-none focus:ring-4 min-h-[2.75rem] text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
@@ -244,7 +245,7 @@ const Home: NextPage = () => {
               <p className="text-left text-ctext font-semibold mb-2 text-base leading-6">
                 Flexible working options
               </p>
-              <input
+              <textarea
                 value={workingops}
                 onChange={(e) => setWorkingops(e.target.value)}
                 className="w-full focus:ring-[#2378d1] focus:outline-none focus:ring-4 min-h-[2.75rem] text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
@@ -281,6 +282,17 @@ const Home: NextPage = () => {
                 onChange={(e) => setLocation(e.target.value)}
                 className="w-full focus:ring-[#2378d1] focus:outline-none focus:ring-4 min-h-[2.75rem] text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
                 placeholder={"Location"}
+              />
+            </div>
+            <div>
+              <p className="text-left text-ctext font-semibold mb-2 text-base leading-6">
+                Salary range
+              </p>
+              <input
+                value={salary}
+                onChange={(e) => setSalary(e.target.value)}
+                className="w-full focus:ring-[#2378d1] focus:outline-none focus:ring-4 min-h-[2.75rem] text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
+                placeholder={"Salary"}
               />
             </div>
             <div>
@@ -406,10 +418,10 @@ const Home: NextPage = () => {
             <>
               <div>
                 <h2
-                  className="sm:text-4xl text-3xl font-bold text-slate-900 mx-auto"
+                  className="text-center font-bold font-bold text-[1.5rem] w-full text-ctext"
                   ref={bioRef}
                 >
-                  Your generated bios
+                  Your job ad
                 </h2>
               </div>
               <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
@@ -419,7 +431,7 @@ const Home: NextPage = () => {
                   .map((generatedBio) => {
                     return (
                       <div
-                        className="bg-white rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border"
+                        className="bg-white rounded-xl p-4 text-ctext hover:bg-gray-100 transition cursor-copy border-0"
                         onClick={() => {
                           navigator.clipboard.writeText(generatedBio);
                           toast("Bio copied to clipboard");
