@@ -32,7 +32,7 @@ const Home: NextPage = () => {
   const [vibe, setVibe] = useState<VibeType>(
     "Choose the industry do you work in"
   );
-  const [generatedBios, setGeneratedBios] = useState<string[]>([]);
+  const [generatedBios, setGeneratedBios] = useState<String>("");
 
   const bioRef = useRef<null | HTMLDivElement>(null);
 
@@ -104,19 +104,16 @@ const Home: NextPage = () => {
     const reader = data.getReader();
     const decoder = new TextDecoder();
     let done = false;
-    let generatedText = "";
 
     while (!done) {
       const { value, done: doneReading } = await reader.read();
       done = doneReading;
       const chunkValue = decoder.decode(value);
       console.log(chunkValue);
-      generatedText += chunkValue;
+      setGeneratedBios((prev) => prev + chunkValue);
     }
 
-    setGeneratedBios(generatedText);
     scrollToBios();
-    // Send data to Airtabl
     setLoading(false);
   };
 
@@ -474,29 +471,32 @@ const Home: NextPage = () => {
             <>
               <div></div>
               <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
-                {generatedBios.map((generatedBio, index) => {
-                  return (
-                    <div
-                      className="relative prose prose-sm rounded-xl p-4 text-ctext hover:bg-gray-100 transition cursor-copy border-0"
-                      onClick={() => {
-                        navigator.clipboard.writeText(generatedBio);
-                        toast("Bio copied to clipboard");
-                      }}
-                      key={index}
-                    >
-                      <button
-                        className="absolute bg-[#2378d1] rounded-xl text-white font-medium px-4 py-2 right-0 top-[-10px]"
+                {generatedBios
+                  .substring(generatedBios.indexOf("0"))
+                  .split("%%%%%%%%%")
+                  .map((generatedBio) => {
+                    return (
+                      <div
+                        className="relative prose prose-sm rounded-xl p-4 text-ctext hover:bg-gray-100 transition cursor-copy border-0"
                         onClick={() => {
                           navigator.clipboard.writeText(generatedBio);
                           toast("Bio copied to clipboard");
                         }}
+                        key={generatedBio}
                       >
-                        Copy
-                      </button>
-                      <ReactMarkdown>{generatedBio}</ReactMarkdown>
-                    </div>
-                  );
-                })}
+                        <button
+                          className="absolute bg-[#2378d1] rounded-xl text-white font-medium px-4 py-2 right-0 top-[-10px]"
+                          onClick={() => {
+                            navigator.clipboard.writeText(generatedBio);
+                            toast("Bio copied to clipboard");
+                          }}
+                        >
+                          Copy
+                        </button>
+                        <ReactMarkdown>{generatedBio}</ReactMarkdown>
+                      </div>
+                    );
+                  })}
               </div>
             </>
           )}
