@@ -32,7 +32,7 @@ const Home: NextPage = () => {
   const [vibe, setVibe] = useState<VibeType>(
     "Choose the industry do you work in"
   );
-  const [generatedBios, setGeneratedBios] = useState<String>("");
+  const [generatedBios, setGeneratedBios] = useState<string[]>([]);
 
   const bioRef = useRef<null | HTMLDivElement>(null);
 
@@ -49,7 +49,6 @@ const Home: NextPage = () => {
 
   const generateBio = async (e: any) => {
     e.preventDefault();
-    setGeneratedBios("");
     setLoading(true);
 
     if (!fname || !lname || !email || !vibe) {
@@ -105,13 +104,17 @@ const Home: NextPage = () => {
     const decoder = new TextDecoder();
     let done = false;
 
+    const newGeneratedBios: string[] = [];
+
     while (!done) {
       const { value, done: doneReading } = await reader.read();
       done = doneReading;
       const chunkValue = decoder.decode(value);
       console.log(chunkValue);
-      setGeneratedBios((prev) => prev + chunkValue);
+      newGeneratedBios.push(chunkValue);
     }
+
+    setGeneratedBios(newGeneratedBios);
     scrollToBios();
     // Send data to Airtabl
     setLoading(false);
@@ -493,7 +496,7 @@ const Home: NextPage = () => {
                         >
                           Copy
                         </button>
-                        <p>{generatedBio}</p>
+                        <ReactMarkdown>{generatedBio}</ReactMarkdown>
                       </div>
                     );
                   })}
