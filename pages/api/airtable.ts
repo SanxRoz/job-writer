@@ -16,15 +16,15 @@ export default async function handler(
     {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
         "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
       },
       body: JSON.stringify({
         records: [
           {
             fields: {
-              First_Name: fname,
-              Last_Name: lname,
+              "First Name": fname,
+              "Last Name": lname,
               Email: email,
               Industry: vibe,
             },

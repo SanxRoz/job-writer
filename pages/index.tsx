@@ -52,6 +52,25 @@ const Home: NextPage = () => {
     setGeneratedBios("");
     setLoading(true);
 
+    try {
+      const airtableResponse = await fetch("/api/airtable", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fname,
+          lname,
+          email,
+          vibe,
+        }),
+      });
+      const airtableData = await airtableResponse.json();
+      console.log(airtableData);
+    } catch (error) {
+      console.error(error);
+    }
+
     const response = await fetch("/api/generate", {
       method: "POST",
       headers: {
@@ -82,26 +101,7 @@ const Home: NextPage = () => {
       setGeneratedBios((prev) => prev + chunkValue);
     }
     scrollToBios();
-    // Send data to Airtable
-    try {
-      const airtableResponse = await fetch("/api/airtable", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          fname,
-          lname,
-          email,
-          vibe,
-        }),
-      });
-      const airtableData = await airtableResponse.json();
-      console.log(airtableData);
-    } catch (error) {
-      console.error(error);
-    }
-
+    // Send data to Airtabl
     setLoading(false);
   };
 
