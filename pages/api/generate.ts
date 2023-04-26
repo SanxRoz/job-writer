@@ -22,8 +22,8 @@ const handler = async (req: Request): Promise<Response> => {
     messages: [
       {
         role: "system",
-        content: `You are a world class job writer, return me the text on markdown and between each section add a breakline,
-        I'll provide you with the Company Name, size company, the main product or service, why work in the company, goals, benefits, working options, Job Title, location, supervisor, main responsibilities,  key duties, experience of candidate, Education requirements candidate, key Skills candidate and I want you to create a world class job ad with this example estructure, but if you have a better way to write it, pls improve it
+        content: `You are a world class job writer, return me the text on markdown and between each section add a 2 breaklines, on sections Tasks and responsibilities, Skills and experience and Benefits and perks return me a list
+        I'll provide you with the Company Name, size company, the main product or service, why work in the company, goals, benefits, working options, Job Title, location, supervisor, main responsibilities,  key duties, experience of candidate, Education requirements candidate, key Skills candidate and I want you to create a world class job ad with this example estructure, don't change the structure, just change the content and improve it
 
 example of Smith Auto company that want a Motor Mechanic employee
 
