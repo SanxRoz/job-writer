@@ -53,7 +53,13 @@ const Home: NextPage = () => {
     setLoading(true);
 
     if (!fname || !lname || !email || !vibe) {
-      toast("Please fill in all the fields");
+      toast("Please fill in all the fields", {
+        style: {
+          backgroundColor: "#e11d48",
+          color: "white",
+        },
+      });
+      setLoading(false);
       return;
     }
 
@@ -462,14 +468,7 @@ const Home: NextPage = () => {
         <div className="space-y-10 my-10">
           {generatedBios && (
             <>
-              <div>
-                <h2
-                  className="text-center font-bold font-bold text-[1.5rem] w-full text-ctext"
-                  ref={bioRef}
-                >
-                  Your job ad
-                </h2>
-              </div>
+              <div></div>
               <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
                 {generatedBios
                   .substring(generatedBios.indexOf("1"))
@@ -484,6 +483,14 @@ const Home: NextPage = () => {
                         }}
                         key={generatedBio}
                       >
+                        <button
+                          onClick={() => {
+                            navigator.clipboard.writeText(generatedBio);
+                            toast("Bio copied to clipboard");
+                          }}
+                        >
+                          Copy
+                        </button>
                         <ReactMarkdown>{generatedBio}</ReactMarkdown>
                       </div>
                     );
