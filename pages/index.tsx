@@ -51,6 +51,7 @@ const Home: NextPage = () => {
     e.preventDefault();
     setGeneratedBios("");
     setLoading(true);
+
     const response = await fetch("/api/generate", {
       method: "POST",
       headers: {
@@ -81,6 +82,26 @@ const Home: NextPage = () => {
       setGeneratedBios((prev) => prev + chunkValue);
     }
     scrollToBios();
+    // Send data to Airtable
+    try {
+      const airtableResponse = await fetch("/api/airtable", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fname,
+          lname,
+          email,
+          vibe,
+        }),
+      });
+      const airtableData = await airtableResponse.json();
+      console.log(airtableData);
+    } catch (error) {
+      console.error(error);
+    }
+
     setLoading(false);
   };
 
@@ -132,6 +153,7 @@ const Home: NextPage = () => {
                 onChange={(e) => setFname(e.target.value)}
                 className="w-full focus:ring-[#2378d1] focus:outline-none focus:ring-4 min-h-[2.75rem] text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
                 placeholder={"First name"}
+                required
               />
             </div>
             <div className="md:col-span-1 col-span-2">
@@ -143,6 +165,7 @@ const Home: NextPage = () => {
                 onChange={(e) => setLname(e.target.value)}
                 className="w-full focus:ring-[#2378d1] focus:outline-none focus:ring-4 min-h-[2.75rem] text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
                 placeholder={"Last name"}
+                required
               />
             </div>
             <div className="col-span-2">
@@ -155,6 +178,7 @@ const Home: NextPage = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full focus:ring-[#2378d1] focus:outline-none focus:ring-4 min-h-[2.75rem] text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
                 placeholder={"Email address"}
+                required
               />
             </div>
             <div className="col-span-2">
@@ -182,6 +206,7 @@ const Home: NextPage = () => {
                 onChange={(e) => setCompany(e.target.value)}
                 className="w-full focus:ring-[#2378d1] focus:outline-none focus:ring-4 min-h-[2.75rem] text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
                 placeholder={"Company name"}
+                required
               />
             </div>
             <div>
@@ -193,6 +218,7 @@ const Home: NextPage = () => {
                 onChange={(e) => setSizecompany(e.target.value)}
                 className="w-full focus:ring-[#2378d1] focus:outline-none focus:ring-4 min-h-[2.75rem] text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
                 placeholder={"Number employees"}
+                required
               />
             </div>
             <div>
@@ -204,6 +230,7 @@ const Home: NextPage = () => {
                 onChange={(e) => setProduct(e.target.value)}
                 className="w-full focus:ring-[#2378d1] focus:outline-none focus:ring-4 min-h-[2.75rem] text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
                 placeholder={"Main product"}
+                required
               />
             </div>
             <div className="col-span-1 md:col-span-2">
@@ -216,6 +243,7 @@ const Home: NextPage = () => {
                 rows={4}
                 className="w-full min-h-22 focus:ring-[#2378d1] focus:outline-none focus:ring-4 text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
                 placeholder={"Is the best place to work because..."}
+                required
               />
             </div>
             <div className="col-span-1 md:col-span-2">
@@ -228,6 +256,7 @@ const Home: NextPage = () => {
                 rows={4}
                 className="w-full focus:ring-[#2378d1] focus:outline-none focus:ring-4 min-h-[2.75rem] text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
                 placeholder={"Goals"}
+                required
               />
             </div>
             <div>
@@ -239,6 +268,7 @@ const Home: NextPage = () => {
                 onChange={(e) => setBenefits(e.target.value)}
                 className="w-full focus:ring-[#2378d1] focus:outline-none focus:ring-4 min-h-[2.75rem] text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
                 placeholder={"Benefits"}
+                required
               />
             </div>
             <div>
@@ -250,6 +280,7 @@ const Home: NextPage = () => {
                 onChange={(e) => setWorkingops(e.target.value)}
                 className="w-full focus:ring-[#2378d1] focus:outline-none focus:ring-4 min-h-[2.75rem] text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
                 placeholder={"Work type"}
+                required
               />
             </div>
           </div>
@@ -271,6 +302,7 @@ const Home: NextPage = () => {
                 onChange={(e) => setJtitle(e.target.value)}
                 className="w-full focus:ring-[#2378d1] focus:outline-none focus:ring-4 min-h-[2.75rem] text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
                 placeholder={"Job title"}
+                required
               />
             </div>
             <div>
@@ -282,19 +314,10 @@ const Home: NextPage = () => {
                 onChange={(e) => setLocation(e.target.value)}
                 className="w-full focus:ring-[#2378d1] focus:outline-none focus:ring-4 min-h-[2.75rem] text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
                 placeholder={"Location"}
+                required
               />
             </div>
-            <div>
-              <p className="text-left text-ctext font-semibold mb-2 text-base leading-6">
-                Salary range
-              </p>
-              <input
-                value={salary}
-                onChange={(e) => setSalary(e.target.value)}
-                className="w-full focus:ring-[#2378d1] focus:outline-none focus:ring-4 min-h-[2.75rem] text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
-                placeholder={"Salary"}
-              />
-            </div>
+
             <div>
               <p className="text-left text-ctext font-semibold mb-2 text-base leading-6">
                 Who is the supervisor?
@@ -304,6 +327,19 @@ const Home: NextPage = () => {
                 onChange={(e) => setSupervisor(e.target.value)}
                 className="w-full focus:ring-[#2378d1] focus:outline-none focus:ring-4 min-h-[2.75rem] text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
                 placeholder={"Supervisor"}
+                required
+              />
+            </div>
+            <div className="col-span-1 md:col-span-2">
+              <p className="text-left text-ctext font-semibold mb-2 text-base leading-6">
+                Salary range
+              </p>
+              <input
+                value={salary}
+                onChange={(e) => setSalary(e.target.value)}
+                className="w-full focus:ring-[#2378d1] focus:outline-none focus:ring-4 min-h-[2.75rem] text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
+                placeholder={"Salary"}
+                required
               />
             </div>
             <div className="col-span-1 md:col-span-2">
@@ -316,6 +352,7 @@ const Home: NextPage = () => {
                 rows={4}
                 className="w-full min-h-22 focus:ring-[#2378d1] focus:outline-none focus:ring-4 text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
                 placeholder={"4 - 5 responsibilities"}
+                required
               />
             </div>
             <div className="col-span-1 md:col-span-2">
@@ -328,6 +365,7 @@ const Home: NextPage = () => {
                 rows={4}
                 className="w-full min-h-22 focus:ring-[#2378d1] focus:outline-none focus:ring-4 text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
                 placeholder={"4 - 5 duties"}
+                required
               />
             </div>
           </div>
@@ -349,6 +387,7 @@ const Home: NextPage = () => {
                 onChange={(e) => setExperience(e.target.value)}
                 className="w-full focus:ring-[#2378d1] focus:outline-none focus:ring-4 min-h-[2.75rem] text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
                 placeholder={"Candidate experience"}
+                required
               />
             </div>
             <div className="col-span-1 md:col-span-2">
@@ -361,6 +400,7 @@ const Home: NextPage = () => {
                 rows={4}
                 className="w-full min-h-22 focus:ring-[#2378d1] focus:outline-none focus:ring-4 text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
                 placeholder={"Education requirements"}
+                required
               />
             </div>
             <div className="col-span-1 md:col-span-2">
@@ -373,6 +413,7 @@ const Home: NextPage = () => {
                 rows={4}
                 className="w-full min-h-22 focus:ring-[#2378d1] focus:outline-none focus:ring-4 text-[#eee] placeholder:text-[#ffffff66] text-gray-300 tracking-wider bg-back border border-0 rounded-lg mb-0 py-2 px-3 text-sm leading-6 transition duration-300 shadow-sm"
                 placeholder={"Key Skills"}
+                required
               />
             </div>
           </div>
