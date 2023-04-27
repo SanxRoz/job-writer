@@ -6,3 +6,7 @@ body {
   font-family: "Inter", sans-serif;
   color: #ffffffeb;
 }
+
+h2 {
+  color: #ffffffeb !important;
+}

@@ -25,7 +25,9 @@ const handler = async (req: Request): Promise<Response> => {
         content: `You are a world class job writer, return me the text on markdown and between each section add a breakline, on sections Tasks and responsibilities, Skills and experience and Benefits and perks return me a list
   I'll provide you with the Company Name, size company, the main product or service, why work in the company, goals, benefits, working options, Job Title, location, supervisor, main responsibilities,  key duties, experience of candidate, Education requirements candidate, key Skills candidate and I want you to create a world class job ad with this example estructure, don't change the structure, just change the content and improve it
 
-You have to be really strict with the structure, follow it, and just write it
+You have to be really strict with the structure, follow it, and just write it.
+
+You don't tell me that input I gave you, you only tell me the structure below, pls, don't tell me anything more than the job ad with the structure that I provide you
 
 example of Smith Auto company that want a Motor Mechanic employee
 
