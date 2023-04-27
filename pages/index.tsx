@@ -471,32 +471,24 @@ const Home: NextPage = () => {
             <>
               <div></div>
               <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
-                {generatedBios
-                  .substring(generatedBios.indexOf("0"))
-                  .split("************")
-                  .map((generatedBio) => {
-                    return (
-                      <div
-                        className="relative prose prose-sm rounded-xl p-4 text-ctext hover:bg-gray-100 transition cursor-copy border-0"
-                        onClick={() => {
-                          navigator.clipboard.writeText(generatedBio);
-                          toast("Bio copied to clipboard");
-                        }}
-                        key={generatedBio}
-                      >
-                        <button
-                          className="absolute bg-[#2378d1] rounded-xl text-white font-medium px-4 py-2 right-0 top-[-10px]"
-                          onClick={() => {
-                            navigator.clipboard.writeText(generatedBio);
-                            toast("Bio copied to clipboard");
-                          }}
-                        >
-                          Copy
-                        </button>
-                        <ReactMarkdown>{generatedBio}</ReactMarkdown>
-                      </div>
-                    );
-                  })}
+                <div
+                  className="relative prose prose-sm rounded-xl p-4 text-ctext hover:bg-gray-100 transition cursor-copy border-0"
+                  onClick={() => {
+                    navigator.clipboard.writeText(generatedBios.toString());
+                    toast("Bio copied to clipboard");
+                  }}
+                >
+                  <button
+                    className="absolute bg-[#2378d1] rounded-xl text-white font-medium px-4 py-2 right-0 top-[-10px]"
+                    onClick={() => {
+                      navigator.clipboard.writeText(generatedBios.toString());
+                      toast("Bio copied to clipboard");
+                    }}
+                  >
+                    Copy
+                  </button>
+                  <ReactMarkdown>{generatedBios.toString()}</ReactMarkdown>
+                </div>
               </div>
             </>
           )}
