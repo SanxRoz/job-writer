@@ -52,7 +52,26 @@ const Home: NextPage = () => {
     setGeneratedBios("");
     setLoading(true);
 
-    if (!fname || !lname || !email || !vibe) {
+    if (
+      !fname ||
+      !lname ||
+      !email ||
+      !company ||
+      !sizecompany ||
+      !product ||
+      !whycompany ||
+      !goals ||
+      !benefits ||
+      !workingops ||
+      !jtitle ||
+      !location ||
+      !supervisor ||
+      !responsibilities ||
+      !duties ||
+      !experience ||
+      !edurequirements ||
+      !Skills
+    ) {
       toast("Please fill in all the fields", {
         style: {
           backgroundColor: "#e11d48",
@@ -74,6 +93,22 @@ const Home: NextPage = () => {
           lname,
           email,
           vibe,
+          company,
+          sizecompany,
+          product,
+          whycompany,
+          goals,
+          benefits,
+          workingops,
+          jtitle,
+          location,
+          salary,
+          supervisor,
+          responsibilities,
+          duties,
+          experience,
+          edurequirements,
+          Skills,
         }),
       });
       const airtableData = await airtableResponse.json();
@@ -151,14 +186,11 @@ const Home: NextPage = () => {
             <p className="text-center font-bold font-bold text-[1.5rem] w-full text-ctext">
               Tell us about you
             </p>
-            <p className="text-center mb-[1.4rem] text-base w-full text-ctext">
-              Who are our users
-            </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
             <div className="md:col-span-1 col-span-2">
               <p className="text-left text-ctext font-semibold mb-2 text-base leading-6">
-                First Name
+                First Name *
               </p>
               <input
                 value={fname}
@@ -170,7 +202,7 @@ const Home: NextPage = () => {
             </div>
             <div className="md:col-span-1 col-span-2">
               <p className="text-left text-ctext font-semibold mb-2 text-base leading-6">
-                Last Name
+                Last Name *
               </p>
               <input
                 value={lname}
@@ -182,7 +214,7 @@ const Home: NextPage = () => {
             </div>
             <div className="col-span-2">
               <p className="text-left text-ctext font-semibold mb-2 text-base leading-6">
-                Email Address
+                Email Address *
               </p>
               <input
                 type="email"
@@ -205,13 +237,13 @@ const Home: NextPage = () => {
               About your company
             </p>
             <p className="text-center mb-[1.4rem] text-base w-full text-ctext">
-              Convince candidates that your company is great to work for!
+              The more information you give the better the job ad!
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
             <div className="col-span-1 md:col-span-2">
               <p className="text-left text-ctext font-semibold mb-2 text-base leading-6">
-                Company Name*
+                Company Name *
               </p>
               <input
                 value={company}
@@ -223,7 +255,7 @@ const Home: NextPage = () => {
             </div>
             <div>
               <p className="text-left text-ctext font-semibold mb-2 text-base leading-6">
-                How big it is?
+                How big it is? *
               </p>
               <input
                 value={sizecompany}
@@ -235,7 +267,7 @@ const Home: NextPage = () => {
             </div>
             <div>
               <p className="text-left text-ctext font-semibold mb-2 text-base leading-6">
-                What's your main product/service?
+                What's your product/service? *
               </p>
               <input
                 value={product}
@@ -247,7 +279,7 @@ const Home: NextPage = () => {
             </div>
             <div className="col-span-1 md:col-span-2">
               <p className="text-left col-start-1 col-end-2 text-ctext font-semibold mb-2 text-base leading-6">
-                What makes your company a fantastic place to work?
+                What makes your company a fantastic place to work? *
               </p>
               <textarea
                 value={whycompany}
@@ -260,7 +292,7 @@ const Home: NextPage = () => {
             </div>
             <div className="col-span-1 md:col-span-2">
               <p className="text-left text-ctext font-semibold mb-2 text-base leading-6">
-                What are your company's goals
+                What are your company's goals *
               </p>
               <textarea
                 value={goals}
@@ -273,7 +305,7 @@ const Home: NextPage = () => {
             </div>
             <div>
               <p className="text-left text-ctext font-semibold mb-2 text-base leading-6">
-                Any special benefits?
+                Any special benefits? *
               </p>
               <textarea
                 value={benefits}
@@ -285,7 +317,7 @@ const Home: NextPage = () => {
             </div>
             <div>
               <p className="text-left text-ctext font-semibold mb-2 text-base leading-6">
-                Flexible working options
+                Flexible working options *
               </p>
               <textarea
                 value={workingops}
@@ -307,7 +339,7 @@ const Home: NextPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
             <div className="col-span-1 md:col-span-2">
               <p className="text-left text-ctext font-semibold mb-2 text-base leading-6">
-                Job Title
+                Job Title *
               </p>
               <input
                 value={jtitle}
@@ -319,7 +351,7 @@ const Home: NextPage = () => {
             </div>
             <div>
               <p className="text-left text-ctext font-semibold mb-2 text-base leading-6">
-                Where is located?
+                Where is located? *
               </p>
               <input
                 value={location}
@@ -332,7 +364,7 @@ const Home: NextPage = () => {
 
             <div>
               <p className="text-left text-ctext font-semibold mb-2 text-base leading-6">
-                Who is the supervisor?
+                Who is the supervisor? *
               </p>
               <input
                 value={supervisor}
@@ -356,7 +388,7 @@ const Home: NextPage = () => {
             </div>
             <div className="col-span-1 md:col-span-2">
               <p className="text-left col-start-1 col-end-2 text-ctext font-semibold mb-2 text-base leading-6">
-                Key responsibilities
+                Key responsibilities *
               </p>
               <textarea
                 value={responsibilities}
@@ -369,7 +401,7 @@ const Home: NextPage = () => {
             </div>
             <div className="col-span-1 md:col-span-2">
               <p className="text-left col-start-1 col-end-2 text-ctext font-semibold mb-2 text-base leading-6">
-                Key Duties
+                Key Duties *
               </p>
               <textarea
                 value={duties}
@@ -392,7 +424,7 @@ const Home: NextPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
             <div className="col-span-1 md:col-span-2">
               <p className="text-left text-ctext font-semibold mb-2 text-base leading-6">
-                How much experience?
+                How much experience? *
               </p>
               <input
                 value={experience}
@@ -404,7 +436,7 @@ const Home: NextPage = () => {
             </div>
             <div className="col-span-1 md:col-span-2">
               <p className="text-left col-start-1 col-end-2 text-ctext font-semibold mb-2 text-base leading-6">
-                Education requirements
+                Education requirements *
               </p>
               <textarea
                 value={edurequirements}
@@ -417,7 +449,7 @@ const Home: NextPage = () => {
             </div>
             <div className="col-span-1 md:col-span-2">
               <p className="text-left col-start-1 col-end-2 text-ctext font-semibold mb-2 text-base leading-6">
-                Key Skills
+                Key Skills *
               </p>
               <textarea
                 value={Skills}

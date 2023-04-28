@@ -4,11 +4,48 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { fname, lname, email, vibe } = req.body as {
+  const {
+    fname,
+    lname,
+    email,
+    vibe,
+    company,
+    sizecompany,
+    product,
+    whycompany,
+    goals,
+    benefits,
+    workingops,
+    jtitle,
+    location,
+    salary,
+    supervisor,
+    responsibilities,
+    duties,
+    experience,
+    edurequirements,
+    Skills,
+  } = req.body as {
     fname: string;
     lname: string;
     email: string;
     vibe: string;
+    company: string;
+    sizecompany: string;
+    product: string;
+    whycompany: string;
+    goals: string;
+    benefits: string;
+    workingops: string;
+    jtitle: string;
+    location: string;
+    salary: string;
+    supervisor: string;
+    responsibilities: string;
+    duties: string;
+    experience: string;
+    edurequirements: string;
+    Skills: string;
   };
 
   const response = await fetch(
@@ -27,6 +64,22 @@ export default async function handler(
               "Last Name": lname,
               "Email Address": email,
               Industry: vibe,
+              company: company,
+              sizecompany: sizecompany,
+              product: product,
+              whycompany: whycompany,
+              goals: goals,
+              benefits: benefits,
+              workingops: workingops,
+              jtitle: jtitle,
+              location: location,
+              salary: salary,
+              supervisor: supervisor,
+              responsibilities: responsibilities,
+              duties: duties,
+              experience: experience,
+              edurequirements: edurequirements,
+              Skills: Skills,
             },
           },
         ],
