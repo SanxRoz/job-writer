@@ -172,7 +172,7 @@ const Home: NextPage = () => {
       <main className="flex flex-col items-center px-[1rem] bg-[#333] w-full max-w-3xl border border-[#ffffff1a] rounded-xl my-8 mx-auto py-12">
         <div className="gap-x-[10px] justify-center flex">
           <Image
-            src="https://uploads-ssl.webflow.com/641f5b3c6bd09b2e785d7f0c/64414a8ada48010faa6730e3_Group%201.svg"
+            src="https://uploads-ssl.webflow.com/640a5eb26ecc85046e9284c6/64596599870b9b0eaffe8906_64414a8ada48010faa6730e3_Group%201.svg"
             width={300}
             height={50}
             alt="Job Writer Icon"
