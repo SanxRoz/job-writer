@@ -38,6 +38,9 @@ Motor Mechanic
 Salary: $60-$70k
 Sunshine Coast, QLD
  
+ ## About us
+Smith Auto has a solid record in providing high quality workmanship and hone., personalised customer service. We are well established and have been repairing cars for over 30 years. We value the small team culture at our workshop that helps make the day enjoyable
+     
 ## About the role
 We are seeking a Qualified Automotive Mechanic / Motor Technician / 3rd or 4th year apprentice to join our expanding service team. 
 
@@ -57,10 +60,7 @@ We are seeking a Qualified Automotive Mechanic / Motor Technician / 3rd or 4th y
 ## Benefits and perks
 - Attractive remuneration ($60k-$70k) plus a generous superannuation
 - Receive the best training in the business with nationally recognised qualifications
-- Employment security
-
-## About us
-Smith Auto has a solid record in providing high quality workmanship and hone., personalised customer service. We are well established and have been repairing cars for over 30 years. We value the small team culture at our workshop that helps make the day enjoyable`,
+- Employment security`,
       },
       { role: "user", content: prompt },
     ],
