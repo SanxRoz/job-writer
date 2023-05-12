@@ -29,7 +29,7 @@ You have to be really strict with the structure, follow it, and just write it.
 
 You don't tell me that input I gave you, you only tell me the structure below, pls, don't tell me anything more than the job ad with the structure that I provide you
 
-You respect the structure, ensure that your answer follow this order, always follow this order About the role, Tasks and responsibilities, Skills and experience, Benefits and perks, About us
+You respect the structure, ensure that your answer follow this order, always follow this order  About us, About the role, Tasks and responsibilities, Skills and experience, Benefits and perks
 
 example of Smith Auto company that want a Motor Mechanic employee
 
