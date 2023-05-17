@@ -22,14 +22,8 @@ class MyDocument extends Document {
             name="twitter:description"
             content="Generate your next Twitter bio in seconds."
           />
-          <meta
-            property="og:image"
-            content="https://twitterbio.com/og-image.png"
-          />
-          <meta
-            name="twitter:image"
-            content="https://twitterbio.com/og-image.png"
-          />
+          <meta property="og:image" content="" />
+          <meta name="twitter:image" content="" />
         </Head>
         <body>
           <Main />
